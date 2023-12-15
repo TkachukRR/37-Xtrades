@@ -2,8 +2,16 @@
 <div class="competitions">
   <h2 class="competitions__title">Competitions</h2>
   <app-statistic
-    title="Weekly challenges"
+    [title]="Title.WeeklyChanges"
     [participants]="participants"
-    [weeklyChallenges]="weeklyChallenges"
+    [statistics]="weeklyChallenges"
+    [winner]="winnerWeeklyChallenges"
+  ></app-statistic>
+  <app-statistic
+    [title]="Title.DoubleGain"
+    [participants]="participants"
+    [statistics]="doubleGainWeekContest"
+    [winner]="winnerDoubleGainWeekContest"
   ></app-statistic>
 </div>
+<button type="button" class="button">+</button>
