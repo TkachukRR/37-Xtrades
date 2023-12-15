@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { Image } from "../../interfaces/image";
 
 @Component({
   selector: 'app-statistic',
@@ -8,5 +9,6 @@ import { Component } from '@angular/core';
   styleUrl: './statistic.component.scss'
 })
 export class StatisticComponent {
-
-}
+  @Input() title = ''
+  @Input() participants: Image[] = []
+ }
