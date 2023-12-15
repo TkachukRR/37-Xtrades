@@ -1,6 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { NgForOf, NgIf, TitleCasePipe, UpperCasePipe } from "@angular/common";
 import { Image } from "../../interfaces/image";
+import { UserStatistic } from "../../interfaces/user-statistic";
 
 @Component({
   selector: 'app-statistic',
@@ -15,6 +16,7 @@ import { Image } from "../../interfaces/image";
   styleUrl: './statistic.component.scss'
 })
 export class StatisticComponent {
-  @Input() title = ''
-  @Input() participants: Image[] = []
+  @Input() title = '';
+  @Input() participants: Image[] = [];
+  @Input() weeklyChallenges: UserStatistic[] = [];
 }
