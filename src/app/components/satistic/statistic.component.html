@@ -1,1 +1,24 @@
-<p>statistic works!</p>
+<div class="statistic">
+  <div class="statistic__participants participants">
+    <div class="participants__wrapper">
+      <ul class="participants__list list">
+        <li class="participants__item" *ngFor="let participant of participants.slice(0, 3)">
+          <img
+            class=""
+            [src]="'data:image/' + participant.type + ';base64,' + participant.data"
+            alt="avatar">
+        </li>
+      </ul>
+      <div class="participants__quantity">{{ participants.length }}</div>
+    </div>
+    <p class="participants__text">Too late to join</p>
+  </div>
+  <h2 class="statistic__title">{{ title | titlecase }}</h2>
+  <ul class="statistic__list">
+    <li></li>
+    <li></li>
+    <li></li>
+  </ul>
+  <div class="statistic__banner"></div>
+  <button type="button" class="statistic__button">{{ 'view' | uppercase }}</button>
+</div>

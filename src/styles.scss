@@ -5,7 +5,16 @@
   --background-image-url-primary: url(./assets/images/bg-vector.svg);
 
   --color-background-primary: #000;
+  --color-background-secondary: #14171A;
+  --color-background-ternary: #2B2E30;
   --color-text-primary: #FFF;
+
+  --color-border-primary: #FFFFFF33;
+
+  --color-button-text-regular: #FFFFFFCC;
+  --color-button-text-active: #082618CC;
+  --color-background-button-regular: #303236;
+  --color-background-button-active: #81EDB9;
 
   --stroke-primary: #81EDBA;
   --fill-primary: #81EDBA;
@@ -22,6 +31,7 @@
   --font-size-l: 14px;
   --font-size-xl: 16px;
   --font-size-xxl: 20px;
+  --font-size-xxxl: 22px;
 
   --line-height-xs: 8px;
   --line-height-s: 10px;
@@ -30,6 +40,8 @@
   --line-height-xl: 18px;
   --line-height-xxl: 20px;
   --line-height-xxxl: 21px;
+  --line-height-xxxxl: 30px;
+  --line-height-xxxxxl: 33px;
 }
 
 *, *:after, *:before{
@@ -55,7 +67,7 @@ body{
   color: var(--color-text-primary);
 }
 
-button {
+button{
   display: inline-block;
   background: none;
   border: none;
@@ -69,6 +81,10 @@ button {
 
 svg, img{
   display: block;
+}
+
+ul{
+  list-style: none;
 }
 
 .skeleton{
@@ -119,7 +135,7 @@ svg, img{
   }
 }
 
-@keyframes loading {
+@keyframes loading{
   from {
     left: -100px;
   } to {
