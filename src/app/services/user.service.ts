@@ -4,6 +4,7 @@ import { User } from "../interfaces/user";
 import { HttpClient } from "@angular/common/http";
 import { Image } from "../interfaces/image";
 import { UserStatistic } from "../interfaces/user-statistic";
+import { Winner } from "../interfaces/winner";
 @Injectable({
   providedIn: 'root'
 })
@@ -45,5 +46,9 @@ export class UserService {
 
   getWeeklyChallenges(): Observable<UserStatistic[]> {
     return this._http.get<UserStatistic[]>(this.baseMockedDataUrl + 'weekly-challenges.json')
+  }
+
+  getWinnerWeeklyChallenges(): Observable<Winner>{
+    return this._http.get<Winner>(this.baseMockedDataUrl + 'winner-weekly-challenges.json')
   }
 }
