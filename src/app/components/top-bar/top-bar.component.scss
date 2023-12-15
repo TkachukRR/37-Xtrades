@@ -1,0 +1,85 @@
+.user{
+  display: flex;
+  gap: 9px;
+  margin-bottom: 2px;
+
+  &__avatar{
+    width: calc(var(--line-height-l) + var(--line-height-l) + 4px);
+    padding: 1px;
+  }
+
+  &__info{
+    flex: 1;
+
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+  }
+  &__score{
+
+  }
+
+  &__button{
+    stroke: var(--color-text-primary);
+
+    &:hover, &:active{
+      stroke: var(--button-hover);
+    }
+  }
+}
+
+.avatar{
+  position: relative;
+  background: var(--color-skeleton-background);
+  border-radius: 50%;
+  height: 100%;
+  overflow: hidden;
+
+  &__image{
+    transform: scale(1.1); //TODO delete for real image with good quality
+  }
+
+  &__name{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: var(--font-size-m);
+    line-height: var(--line-height-xl);
+  }
+}
+
+.info{
+  flex: 1;
+
+  &__name{
+    font-size: var(--font-size-l);
+    font-weight: 400;
+    line-height: var(--line-height-l);
+    margin-bottom: 4px;
+    height: var(--font-size-l);
+    max-width: 150px;
+    overflow: hidden;
+  }
+}
+
+.score{
+  display: flex;
+  gap: 10px;
+  font-weight: 400;
+  font-size: var(--font-size-m);
+  stroke: var(--stroke-primary);
+  fill: var(--fill-primary);
+
+  &__bits,
+  &__points{
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+
+  &__text{
+    min-width: 32px;
+    height: var(--font-size-l);
+  }
+}
