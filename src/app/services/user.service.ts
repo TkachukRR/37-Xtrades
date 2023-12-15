@@ -2,6 +2,7 @@ import { inject, Injectable } from '@angular/core';
 import { BehaviorSubject, delay, Observable } from "rxjs";
 import { User } from "../interfaces/user";
 import { HttpClient } from "@angular/common/http";
+import { Image } from "../interfaces/image";
 @Injectable({
   providedIn: 'root'
 })
@@ -35,5 +36,9 @@ export class UserService {
 
   getLoadingUserDataStatus(): Observable<boolean> {
     return this.loadingUserData$
+  }
+
+  getParticipants(): Observable<Image[]> {
+    return this._http.get<Image[]>(this.baseMockedDataUrl + 'participants.json')
   }
 }
