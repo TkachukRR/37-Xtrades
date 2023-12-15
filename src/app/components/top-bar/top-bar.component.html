@@ -1,6 +1,6 @@
 <div class="user">
   <div class="user__avatar">
-    <div class="avatar">
+    <div class="avatar" [ngClass]="{'skeleton skeleton__img': loading }">
       <img
         *ngIf="!loading"
         class="avatar__image"
@@ -11,7 +11,7 @@
   </div>
   <div class="user__info">
     <div class="info">
-      <h3 class="info__name">{{ !loading ? user.firstName + ' ' + user.lastName: '' }}</h3>
+      <h3 class="info__name" [ngClass]="{'skeleton skeleton__text': loading }">{{ !loading ? user.firstName + ' ' + user.lastName: '' }}</h3>
       <p class="info__score score">
         <span class="score__bits">
           <svg width="16" height="10" viewBox="0 0 16 10" xmlns="http://www.w3.org/2000/svg">
@@ -21,14 +21,14 @@
             <path d="M2.47991 4.02002C2.47991 3.90345 2.57509 3.80896 2.69251 3.80896H6.56189C6.62542 3.80896 6.68562 3.83716 6.726 3.88585L7.54304 4.87078C7.60769 4.94871 7.60769 5.06118 7.54304 5.13912L6.726 6.12405C6.68562 6.17273 6.62542 6.20093 6.56189 6.20093H2.69251C2.57509 6.20093 2.47991 6.10644 2.47991 5.98987V5.21603H1.20379C1.08649 5.21603 0.991398 5.12154 0.991398 5.00497C0.991398 4.8884 1.08649 4.79391 1.20379 4.79391H2.47991V4.02002Z"/>
             <path d="M1.69878 10C1.58137 10 1.48619 9.90551 1.48619 9.78894V9.08554H0.212393C0.0950915 9.08554 0 8.99104 0 8.87447C0 8.75791 0.0950915 8.66341 0.212393 8.66341H1.48619V7.95979C1.48619 7.84323 1.58137 7.74873 1.69878 7.74873H5.05701C5.23966 7.74873 5.33728 7.9623 5.21701 8.09877L3.60481 9.92793C3.56444 9.97373 3.50612 10 3.44482 10H1.69878Z"/>
           </svg>
-          <span class="score__text">{{ !loading ? user.bits : '' }}</span> xBits
+          <span class="score__text" [ngClass]="{'skeleton skeleton__text': loading }">{{ !loading ? user.bits : '' }}</span> xBits
         </span>
         <span class="score__points">
           <svg width="14" height="10" viewBox="0 0 14 10" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path d="M12.6462 2.08812L9.46997 3.67624L6.8231 0.5L4.17624 3.67624L1 2.08812L2.05875 7.38185H11.5875L12.6462 2.08812Z" stroke-linejoin="round"/>
             <path d="M2.05859 9.5H11.5873" stroke-linejoin="round"/>
           </svg>
-          <span class="score__text">{{ !loading ? user.points : '' }}</span>
+          <span class="score__text" [ngClass]="{'skeleton skeleton__text': loading }">{{ !loading ? user.points : '' }}</span>
         </span>
       </p>
     </div>
