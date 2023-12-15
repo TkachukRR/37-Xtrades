@@ -1,1 +1,65 @@
 /* You can add global styles to this file, and also import other style files */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,500;0,600;1,600&display=swap');
+
+:root{
+  --background-image-url-primary: url(./assets/images/bg-vector.svg);
+
+  --color-background-primary: #000;
+  --color-text-primary: #FFF;
+
+  --font-family-primary: 'Poppins', sans-serif;
+
+  --font-size-xs: 8px;
+  --font-size-s: 10px;
+  --font-size-m: 12px;
+  --font-size-l: 14px;
+  --font-size-xl: 16px;
+  --font-size-xxl: 20px;
+
+  --line-height-xs: 8px;
+  --line-height-s: 10px;
+  --line-height-m: 12px;
+  --line-height-l: 14px;
+  --line-height-xl: 18px;
+  --line-height-xxl: 20px;
+  --line-height-xxxl: 21px;
+}
+
+*, *:after, *:before{
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body{
+  padding: 10px 20px;
+
+  font-family: var(--font-family-primary);
+  font-weight: 500;
+  font-size: var(--font-size-l);
+  line-height: var(--line-height-l);
+
+  background-color: var(--color-background-primary);
+  background-image: var(--background-image-url-primary);
+  background-repeat: no-repeat;
+  background-position: center top;
+  background-size: cover;
+
+  color: var(--color-text-primary);
+}
+
+button {
+  display: inline-block;
+  background: none;
+  border: none;
+  outline: none;
+  cursor: pointer;
+
+  & svg {
+    display: block;
+  }
+}
+
+svg, img{
+  display: block;
+}
