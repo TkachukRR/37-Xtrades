@@ -3,6 +3,7 @@ import { BehaviorSubject, delay, Observable } from "rxjs";
 import { User } from "../interfaces/user";
 import { HttpClient } from "@angular/common/http";
 import { Image } from "../interfaces/image";
+import { UserStatistic } from "../interfaces/user-statistic";
 @Injectable({
   providedIn: 'root'
 })
@@ -40,5 +41,9 @@ export class UserService {
 
   getParticipants(): Observable<Image[]> {
     return this._http.get<Image[]>(this.baseMockedDataUrl + 'participants.json')
+  }
+
+  getWeeklyChallenges(): Observable<UserStatistic[]> {
+    return this._http.get<UserStatistic[]>(this.baseMockedDataUrl + 'weekly-challenges.json')
   }
 }
