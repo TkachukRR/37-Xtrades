@@ -35,7 +35,7 @@
     "alerts": 20,
     "winRate": 85,
     "yield": 11,
-    "earningCurrency": 1430,
-    "earningPercentage": 25
+    "earningCurrency": -1500,
+    "earningPercentage": 10
   }
 ]
