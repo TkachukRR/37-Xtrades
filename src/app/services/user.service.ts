@@ -55,4 +55,8 @@ export class UserService {
   getDoubleGainWeekContest(): Observable<UserStatistic[]> {
     return this._http.get<UserStatistic[]>(this.baseMockedDataUrl + 'double-gain-week-contest.json')
   }
+
+  getWinnerDoubleGainWeekContest(): Observable<Winner>{
+    return this._http.get<Winner>(this.baseMockedDataUrl + 'winner-double-gain-week-contest.json')
+  }
 }
