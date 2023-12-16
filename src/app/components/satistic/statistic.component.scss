@@ -3,6 +3,7 @@
   border-radius: 20px;
   background: var(--color-background-secondary);
   padding: 15px;
+  margin-bottom: 10px;
 
   &__participants{
     margin-bottom: 18px;
@@ -16,8 +17,16 @@
     margin-bottom: 22px;
   }
 
+  &__list{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 20px;
+  }
+
   &__banner{
     margin-bottom: 25px;
+    font-size: var(--font-size-s);
   }
 
   &__button{
@@ -87,5 +96,204 @@
     text-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
     font-weight: 400;
     opacity: 0.5;
+  }
+}
+
+.user{
+  display: flex;
+  border-radius: 8px;
+  overflow: hidden;
+
+  &__avatar{
+    width: 50px;
+    position: relative;
+
+    & svg{
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-25%, -50%);
+      z-index: 300;
+    }
+  }
+
+  &__rating{
+    position: absolute;
+    top: -2px;
+    left: 6px;
+    z-index: 200;
+    color: #0B254D;
+    opacity: 0.2;
+    font-size: 33px;
+    font-style: italic;
+    font-weight: 600;
+    line-height: 33px;
+    letter-spacing: 1.32px;
+  }
+
+  .user__ordinal{
+    vertical-align: super;
+  }
+
+  &__info{
+    flex: 1;
+    padding: 8px 12px 11px 22px;
+    position: relative;
+
+    &:after{
+      content: '';
+      display: block;
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      opacity: .1;
+    }
+
+    &--green:after{
+      background: linear-gradient(90deg, rgba(129, 237, 186, 0.00) 0%, #54FFAE 100%);
+    }
+
+    &--red:after{
+      background: linear-gradient(90deg, rgba(129, 237, 186, 0.00) 0%, #FF6F6F 100%);
+    }
+  }
+
+  &__name{
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    font-size: var(--font-size-xl);
+    line-height: 1.5;
+    font-weight: 500;
+    margin-bottom: 2px;
+  }
+
+  &__stats{
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__numbers{
+    display: flex;
+    gap: 10px;
+
+    font-size: var(--font-size-l);
+    line-height: 1.5;
+    font-weight: 500;
+  }
+
+  &__alerts,
+  &__rate,
+  &__yield{
+    & div{
+      font-size: var(--font-size-s);
+      line-height: 1;
+      font-weight: 400;
+      opacity: .5;
+    }
+  }
+
+  &__earning{
+    font-size: var(--font-size-l);
+    line-height: 1.5;
+    font-weight: 600;
+
+    & .percent{
+      font-size: var(--font-size-s);
+      line-height: 1;
+      text-align: right;
+    }
+  }
+}
+
+.blur{
+  &:after{
+    content: '';
+    display: block;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.4);
+    backdrop-filter: blur(50px);
+  }
+
+  &--first{
+    background:
+      url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="50" height="77" viewBox="0 0 50 77" fill="none"><ellipse cx="12.5" cy="40" rx="23.5" ry="24" fill="%2300A5EA"/></svg>'),
+      url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="50" height="77" viewBox="0 0 50 77" fill="none"><ellipse cx="46.5" cy="24" rx="23.5" ry="24" fill="%2300FFD1"/></svg>'),
+      linear-gradient(rgba(255, 255, 255, 1), rgba(255, 255, 255, 1));
+  }
+
+  &--second{
+    background:
+      url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="50" height="77" viewBox="0 0 50 77" fill="none"><ellipse cx="12.5" cy="40" rx="23.5" ry="24" fill="%23FF00E5"/></svg>'),
+      url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="50" height="77" viewBox="0 0 50 77" fill="none"><ellipse cx="46.5" cy="24" rx="23.5" ry="24" fill="%23FFE600"/></svg>'),
+      linear-gradient(rgba(255, 255, 255, 1), rgba(255, 255, 255, 1));
+  }
+
+  &--third{
+    background:
+      url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="50" height="77" viewBox="0 0 50 77" fill="none"><ellipse cx="12.5" cy="40" rx="23.5" ry="24" fill="%2300A5EA"/></svg>'),
+      url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="50" height="77" viewBox="0 0 50 77" fill="none"><ellipse cx="46.5" cy="24" rx="23.5" ry="24" fill="%23FF8E4F"/></svg>'),
+      linear-gradient(rgba(255, 255, 255, 1), rgba(255, 255, 255, 1));
+  }
+}
+
+.winner{
+  display: flex;
+  justify-content: space-between;
+
+  &__wrapper{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  &__info,
+  &__prize,
+  &__days{
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  &__avatar{
+    height: 24px;
+    width: 24px;
+    border-radius: 50%;
+    overflow: hidden;
+    & img{
+      height: 100%;
+      width: 100%;
+    }
+  }
+
+  &__nick,
+  &__by{
+    font-size: var(--font-size-xs);
+    font-weight: 400;
+    opacity: .5;
+  }
+
+  &__days{
+    font-weight: 500;
+    color: var(--color-text-accent-secondary);
+
+  }
+
+  &__quantity{
+    padding: 3px;
+    width: 24px;
+    text-align: center;
+    font-size: var(--font-size-m);
+    line-height: 1.5;
+    border-radius: 50%;
+    border: 0.5px solid var(--color-text-accent-secondary);
+  }
+
+  &__sub{
+    font-size: var(--font-size-xs);
+    font-weight: 400;
   }
 }
