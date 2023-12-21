@@ -41,22 +41,32 @@ export class UserService {
   }
 
   getParticipants(): Observable<Image[]> {
-    return this._http.get<Image[]>(this.baseMockedDataUrl + 'participants.json')
+    return this._http.get<Image[]>(this.baseMockedDataUrl + 'participants.json').pipe(
+      delay(2000) //TODO emulation server delay (delete)
+    )
   }
 
   getWeeklyChallenges(): Observable<UserStatistic[]> {
-    return this._http.get<UserStatistic[]>(this.baseMockedDataUrl + 'weekly-challenges.json')
+    return this._http.get<UserStatistic[]>(this.baseMockedDataUrl + 'weekly-challenges.json').pipe(
+      delay(2000) //TODO emulation server delay (delete)
+    )
   }
 
   getWinnerWeeklyChallenges(): Observable<Winner>{
-    return this._http.get<Winner>(this.baseMockedDataUrl + 'winner-weekly-challenges.json')
+    return this._http.get<Winner>(this.baseMockedDataUrl + 'winner-weekly-challenges.json').pipe(
+      delay(2000) //TODO emulation server delay (delete)
+    )
   }
 
   getDoubleGainWeekContest(): Observable<UserStatistic[]> {
-    return this._http.get<UserStatistic[]>(this.baseMockedDataUrl + 'double-gain-week-contest.json')
+    return this._http.get<UserStatistic[]>(this.baseMockedDataUrl + 'double-gain-week-contest.json').pipe(
+      delay(2000) //TODO emulation server delay (delete)
+    )
   }
 
   getWinnerDoubleGainWeekContest(): Observable<Winner>{
-    return this._http.get<Winner>(this.baseMockedDataUrl + 'winner-double-gain-week-contest.json')
+    return this._http.get<Winner>(this.baseMockedDataUrl + 'winner-double-gain-week-contest.json').pipe(
+      delay(2000) //TODO emulation server delay (delete)
+    )
   }
 }
