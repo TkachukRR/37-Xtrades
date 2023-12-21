@@ -3,6 +3,7 @@ import { User } from "../../interfaces/user";
 import { NgClass, NgIf, NgStyle } from "@angular/common";
 import { UserService } from "../../services/user.service";
 import { Subscription } from "rxjs";
+import { SkeletonDirective } from "../../directives/skeleton.directive";
 
 @Component({
   selector: 'app-top-bar',
@@ -10,7 +11,8 @@ import { Subscription } from "rxjs";
   imports: [
     NgClass,
     NgIf,
-    NgStyle
+    NgStyle,
+    SkeletonDirective
   ],
   templateUrl: './top-bar.component.html',
   styleUrl: './top-bar.component.scss'

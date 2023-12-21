@@ -92,56 +92,33 @@ ul{
 
 .skeleton{
   position: relative;
+  background: var(--color-skeleton-background);
+  border-radius: 2px;
   overflow: hidden;
 
-  &:after{
-    content: '';
-    display: block;
-    position: absolute;
-    width: 100%;
-    background: var(--color-skeleton-background);
+  &--img{
+    height: 100% !important;
   }
 
-  &:before{
+  &:after, &--img:after{
     content: '';
     display: block;
     position: absolute;
-    left: -100px;
-    width: 100px;
+    height: 100%;
+    left: -50px;
+    width: 50px;
     top: 0;
-    z-index: 999;
     background: linear-gradient(to right, transparent 0%, var(--color-skeleton-frame) 50%, transparent 100%);
-    animation: loading 1.5s cubic-bezier(0.5, 0.0, 0.1, 1) infinite;
-    animation-delay: 100s;
-  }
-
-  &__img:after{
-    top: 0;
-    left: 0;
-    height: 100%;
-    border-radius: 50%;
-  }
-
-  &__img:before{
-    height: 100%;
-  }
-
-  &__text:after{
-    top: 1px;
-    left: 0;
-    height: calc(100% - 2px);
-    border-radius: 2px;
-  }
-
-  &__text:before{
-    height: calc(100% - 2px);
+    animation: loading 3s cubic-bezier(0.5, 0.0, 0.1, 1) infinite;
+    animation-delay: 100ms;
   }
 }
 
 @keyframes loading{
   from {
-    left: -100px;
-  } to {
-      left: 100%;
-    }
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(100vw);
+  }
 }

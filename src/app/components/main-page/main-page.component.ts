@@ -21,8 +21,8 @@ import { Title } from "../../custom/statistic-title.enum";
 export class MainPageComponent implements OnInit, OnDestroy{
   private _us = inject(UserService);
   private subs: Subscription[] = [];
-  participants: Image[] = [];
-  weeklyChallenges: UserStatistic[] = [];
+  participants: Image[] = Array(3).fill({} as Image);
+  weeklyChallenges: UserStatistic[] = Array(3).fill({} as UserStatistic);
   winnerWeeklyChallenges: Winner = {} as Winner;
   doubleGainWeekContest: UserStatistic[] = [];
   winnerDoubleGainWeekContest: Winner = {} as Winner;

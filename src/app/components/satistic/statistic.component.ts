@@ -1,10 +1,11 @@
 import { Component, Input } from '@angular/core';
-import { CurrencyPipe, NgClass, NgForOf, NgIf, NgStyle, TitleCasePipe, UpperCasePipe } from "@angular/common";
+import { CurrencyPipe, JsonPipe, NgClass, NgForOf, NgIf, NgStyle, TitleCasePipe, UpperCasePipe } from "@angular/common";
 import { Image } from "../../interfaces/image";
 import { UserStatistic } from "../../interfaces/user-statistic";
 import { OrdinalPipe } from "../../custom/ordinal.pipe";
 import { Winner } from "../../interfaces/winner";
 import { Title } from "../../custom/statistic-title.enum";
+import { SkeletonDirective } from "../../directives/skeleton.directive";
 
 @Component({
   selector: 'app-statistic',
@@ -17,7 +18,9 @@ import { Title } from "../../custom/statistic-title.enum";
     CurrencyPipe,
     NgStyle,
     NgClass,
-    OrdinalPipe
+    OrdinalPipe,
+    JsonPipe,
+    SkeletonDirective
   ],
   templateUrl: './statistic.component.html',
   styleUrl: './statistic.component.scss'

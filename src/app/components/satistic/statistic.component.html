@@ -3,13 +3,16 @@
     <div class="participants__wrapper">
       <ul class="participants__list list">
         <li class="participants__item" *ngFor="let participant of participants.slice(0, 3)">
-          <img
-            class=""
-            [src]="'data:image/' + participant.type + ';base64,' + participant.data"
-            alt="avatar">
+          <div class="avatar">
+            <img
+              *ngIf="participant?.data"
+              class=""
+              [src]="'data:image/' + participant.type + ';base64,' + participant.data"
+              alt="avatar">
+          </div>
         </li>
       </ul>
-      <div class="participants__quantity">{{ participants.length }}</div>
+      <div class="participants__quantity">{{ participants[0].data ? participants.length : '' }}</div>
     </div>
     <p class="participants__text" *ngIf="title === Title.WeeklyChanges">Too late to join</p>
   </div>
@@ -19,19 +22,20 @@
       <div class="user__avatar blur" [ngClass]="{'blur--first': i === 0, 'blur--second': i === 1, 'blur--third': i === 2,}">
         <div class="user__rating">{{ i + 1 }}<sub class="user__ordinal">{{ i + 1 | ordinal }}</sub></div>
         <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="50" height="43" viewBox="0 0 50 43" fill="none">
-          <path d="M33.5598 1C35.6906 1 37.6615 2.13005 38.7379 3.96892L47.2257 18.4689C48.3216 20.3411 48.3216 22.6589 47.2257 24.5311L38.7379 39.0311C37.6615 40.87 35.6906 42 33.5598 42H16.4402C14.3094 42 12.3385 40.8699 11.2621 39.0311L2.77429 24.5311C1.6784 22.6589 1.6784 20.3411 2.77429 18.4689L11.2621 3.96892C12.3385 2.13005 14.3094 1 16.4402 1L33.5598 1Z" [attr.fill]="'url(#'+ user.lastName + user.firstName +')'"/>
+          <path d="M33.5598 1C35.6906 1 37.6615 2.13005 38.7379 3.96892L47.2257 18.4689C48.3216 20.3411 48.3216 22.6589 47.2257 24.5311L38.7379 39.0311C37.6615 40.87 35.6906 42 33.5598 42H16.4402C14.3094 42 12.3385 40.8699 11.2621 39.0311L2.77429 24.5311C1.6784 22.6589 1.6784 20.3411 2.77429 18.4689L11.2621 3.96892C12.3385 2.13005 14.3094 1 16.4402 1L33.5598 1Z" [attr.fill]="user.lastName + user.firstName ? 'url(#'+ user.lastName + user.firstName  +')' : 'var(--color-skeleton-background)'"/>
           <path d="M39.1694 3.71634C38.0033 1.72422 35.8681 0.5 33.5598 0.5L16.4402 0.5C14.1319 0.5 11.9967 1.72422 10.8306 3.71633L2.34278 18.2163C1.15557 20.2445 1.15557 22.7555 2.34278 24.7837L10.8306 39.2837C11.9967 41.2758 14.1319 42.5 16.4402 42.5H33.5598C35.8681 42.5 38.0033 41.2758 39.1694 39.2837L47.6572 24.7837C48.8444 22.7555 48.8444 20.2445 47.6572 18.2163L39.1694 3.71634Z" stroke="white" stroke-opacity="0.2"/>
           <defs>
             <pattern [id]="user.lastName + user.firstName" patternContentUnits="objectBoundingBox" width="1" height="1">
               <use [attr.xlink:href]="'#' + user.firstName + user.lastName" transform="matrix(0.00155763 0 0 0.00182357 0 -0.00148165)"/>
             </pattern>
-            <image [id]="user.firstName + user.lastName" width="642" height="550" [attr.xlink:href]="'data:image/' + user.avatar.type + ';base64,' + user.avatar.data"/>
+            <image *ngIf="user?.avatar?.type" [id]="user.firstName + user.lastName" width="642" height="550" [attr.xlink:href]="'data:image/' + user.avatar.type + ';base64,' + user.avatar.data"/>
           </defs>
         </svg>
       </div>
       <div class="user__info" [ngClass]="{'user__info--green': user.earningCurrency >= 0, 'user__info--red': user.earningCurrency < 0, }">
         <h4 class="user__name">
-          {{ user.firstName + ' ' + user.lastName }}
+          <div *ngIf="!user?.firstName && !user?.lastName" [appSkeleton]="75" class="skeleton" ></div>
+          {{ user?.firstName && user?.lastName ? user.firstName + ' ' + user.lastName : '' }}
           <span *ngIf="user.earningPercentage >= 20">
             <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 14 14" fill="none">
               <path d="M5.89826 0.727209C6.56653 0.286114 7.43347 0.286114 8.10175 0.72721L8.95472 1.29022C9.16759 1.43072 9.40536 1.52921 9.65523 1.58038L10.6565 1.78542C11.4409 1.94605 12.0539 2.55908 12.2146 3.34352L12.4196 4.34477C12.4708 4.59464 12.5693 4.83241 12.7098 5.04528L13.2728 5.89826C13.7139 6.56653 13.7139 7.43347 13.2728 8.10174L12.7098 8.95472C12.5693 9.16759 12.4708 9.40536 12.4196 9.65523L12.2146 10.6565C12.0539 11.4409 11.4409 12.0539 10.6565 12.2146L9.65523 12.4196C9.40536 12.4708 9.16759 12.5693 8.95472 12.7098L8.10174 13.2728C7.43347 13.7139 6.56653 13.7139 5.89825 13.2728L5.04528 12.7098C4.83241 12.5693 4.59464 12.4708 4.34477 12.4196L3.34352 12.2146C2.55908 12.0539 1.94605 11.4409 1.78542 10.6565L1.58038 9.65523C1.52921 9.40536 1.43072 9.16759 1.29022 8.95472L0.727209 8.10174C0.286114 7.43347 0.286114 6.56653 0.727209 5.89825L1.29022 5.04528C1.43072 4.83241 1.52921 4.59464 1.58038 4.34477L1.78542 3.34352C1.94605 2.55908 2.55908 1.94605 3.34352 1.78542L4.34477 1.58038C4.59464 1.52921 4.83241 1.43072 5.04528 1.29022L5.89826 0.727209Z" fill="#00A5EA"/>
@@ -41,31 +45,51 @@
         </h4>
         <div class="user__stats">
           <div class="user__numbers">
-            <div class="user__alerts">{{ user.alerts }}<div>Alerts</div></div>
-            <div class="user__rate">{{ user.winRate + '%'}}<div>Win Rate</div></div>
-            <div class="user__yield">{{ user.yield + '%'}}<div>Yield</div></div>
+            <div class="user__alerts">
+              <div *ngIf="!user.alerts" appSkeleton class="skeleton" ></div>
+              {{ user.alerts }}<div>Alerts</div>
+            </div>
+            <div class="user__rate">
+              <div *ngIf="!user.alerts" appSkeleton class="skeleton" ></div>
+              {{ user.winRate ? user.winRate + '%' : '' }}<div>Win Rate</div>
+            </div>
+            <div class="user__yield">
+              <div *ngIf="!user.alerts" appSkeleton class="skeleton" ></div>
+              {{ user.yield ? user.yield + '%' : '' }}<div>Yield</div>
+            </div>
           </div>
           <div class="user__earning" [ngStyle]="{'color': user.earningCurrency < 0 ? 'var(--color-text-accent-secondary)' : 'var(--color-text-accent-primary)'}">
-            <div>{{ user.earningCurrency >= 0 ? '+':'' }}{{ user.earningCurrency | currency:'':'symbol':'1.0-0' }}</div>
-            <div class="percent">{{ user.earningPercentage + '%'}}</div>
+            <div>
+              <div *ngIf="!user.earningCurrency" appSkeleton class="skeleton" ></div>
+              {{ user.earningCurrency >= 0 ? '+':'' }}{{ user.earningCurrency | currency:'':'symbol':'1.0-0' }}</div>
+            <div class="percent">
+              <div *ngIf="!user.earningPercentage" appSkeleton class="skeleton" ></div>
+              {{ user.earningPercentage ? user.earningPercentage + '%' : '' }}
+            </div>
           </div>
         </div>
       </div>
     </li>
   </ul>
   <div class="statistic__banner">
-    <div class="winner" *ngIf="winner.hasOwnProperty('firstName')">
+    <div class="winner">
       <div class="winner__wrapper">
         <div class="winner__info">
           <div class="winner__avatar">
             <img
-              class=""
+              *ngIf="winner?.avatar?.type"
               [src]="'data:image/' + winner.avatar.type + ';base64,' + winner.avatar.data"
               alt="avatar">
           </div>
           <div class="winner__details">
-            <h5 class="winner__name">{{ winner.firstName + ' ' + winner.lastName }}</h5>
-            <div class="winner__nick">{{ winner.nick }}</div>
+            <h5 class="winner__name">
+              <div *ngIf="!winner.firstName && !winner.lastName" appSkeleton class="skeleton" ></div>
+              {{ winner.firstName || winner.lastName ? winner.firstName + ' ' + winner.lastName : ''}}
+            </h5>
+            <div class="winner__nick">
+              <div *ngIf="!winner.nick" appSkeleton class="skeleton" ></div>
+              {{ winner.nick ? winner.nick : '' }}
+            </div>
           </div>
         </div>
         <div class="winner__prize">
@@ -104,13 +128,16 @@
             </defs>
           </svg>
           <div class="winner__sponsor">
-            <div class="winner__prize">{{ winner.prize | currency:'':'':'1.0-0' }}</div>
+            <div class="winner__prize">
+              <div *ngIf="!winner.prize" appSkeleton class="skeleton"></div>
+              {{ winner.prize ? (winner.prize | currency:'':'':'1.0-0') : ''}}
+            </div>
             <div class="winner__by">&#64;xBits prize</div>
           </div>
         </div>
       </div>
       <div class="winner__days" [ngStyle]="{'color': winner.daysPast < 4 ? 'var(--color-text-accent-secondary)' : 'var(--color-text-primary)'}">
-        <div class="winner__quantity" [ngStyle]="{'border-color': winner.daysPast < 4 ? 'var(--color-text-accent-secondary)' : 'var(--color-text-primary)'}">{{ winner.daysPast }}</div>
+        <div class="winner__quantity" *ngIf="winner.daysPast" [ngStyle]="{'border-color': winner.daysPast < 4 ? 'var(--color-text-accent-secondary)' : 'var(--color-text-primary)'}">{{ winner.daysPast }}</div>
         <div class="winner__text">
           Days
           <div class="winner__sub">past</div>
