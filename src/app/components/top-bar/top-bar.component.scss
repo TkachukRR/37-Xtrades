@@ -4,7 +4,7 @@
   margin-bottom: 2px;
 
   &__avatar{
-    width: calc(var(--line-height-l) + var(--line-height-l) + 4px);
+    width: calc(var(--line-height-l) + var(--line-height-l) + 4px); //info__name line-height + info__name margin bottom + info__score line-height
     padding: 1px;
   }
 
@@ -14,9 +14,6 @@
     display: flex;
     justify-content: space-between;
     gap: 10px;
-  }
-  &__score{
-
   }
 
   &__button{
@@ -46,6 +43,7 @@
     transform: translate(-50%, -50%);
     font-size: var(--font-size-m);
     line-height: var(--line-height-xl);
+    font-weight: 600;
   }
 }
 

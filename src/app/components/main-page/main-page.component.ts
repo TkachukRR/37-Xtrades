@@ -24,7 +24,7 @@ export class MainPageComponent implements OnInit, OnDestroy{
   participants: Image[] = Array(3).fill({} as Image);
   weeklyChallenges: UserStatistic[] = Array(3).fill({} as UserStatistic);
   winnerWeeklyChallenges: Winner = {} as Winner;
-  doubleGainWeekContest: UserStatistic[] = [];
+  doubleGainWeekContest: UserStatistic[] = Array(3).fill({} as UserStatistic);
   winnerDoubleGainWeekContest: Winner = {} as Winner;
 
 

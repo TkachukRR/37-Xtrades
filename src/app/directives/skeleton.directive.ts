@@ -20,8 +20,8 @@ export class SkeletonDirective implements OnInit{
 
     this._renderer.setStyle(this._elRef.nativeElement, 'width', this.widthPercent + '%');
     this._renderer.setStyle(this._elRef.nativeElement, 'height', parentFontSize + 'px');
-    this._renderer.setStyle(this._elRef.nativeElement, 'margin-top', ((parentLineHeight - parentFontSize) / 2 + parentMarginTop) + 'px');
-    this._renderer.setStyle(this._elRef.nativeElement, 'margin-bottom', ((parentLineHeight - parentFontSize) / 2 + parentMarginBottom) + 'px');
+    this._renderer.setStyle(this._elRef.nativeElement, 'margin-top', ((parentLineHeight - parentFontSize) / 2) + 'px');
+    this._renderer.setStyle(this._elRef.nativeElement, 'margin-bottom', ((parentLineHeight - parentFontSize) / 2 ) + 'px');
 
   }
 }
